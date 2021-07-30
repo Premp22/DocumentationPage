@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP documentation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+</head>
+<body>
+  
+    <div class="row bg-light">
+      
+        <div class="col-sm-2 bg-light pl-2 "  id="lsection"> 
+            <h1 class=" bg-dark text-white text-center" >HTTP</h1>
+            <ul class="nav flex-column ml-3">
+                <li class="nav-item py-3">
+                  <a class="nav-link " href="#Introduction">Introduction</a>
+                </li>
+                <li class="nav-item py-3">
+                  <a class="nav-link" href="#HTTP access control">HTTP access control (CORS)
+                </a>
+                </li>
+                <li class="nav-item py-3">
+                  <a class="nav-link" href="#HTTP authentication">HTTP authentication</a>
+                </li>
+                <li class="nav-item py-3">
+                  <a class="nav-link " href="#HTTP caching" >HTTP caching</a>
+                </li>
+                <li class="nav-item py-3">
+                    <a class="nav-link active" href="#HTTP compression">HTTP compression</a>
+                  </li>
+                  <li class="nav-item py-3">
+                    <a class="nav-link" href="#HTTP conditional requests">HTTP conditional requests</a>
+                  </li>
+                  <li class="nav-item py-3">
+                    <a class="nav-link" href="#Content negotiation">HTTP content negotiation
+                    </a>
+                  </li>
+                  <li class="nav-item py-3">
+                    <a class="nav-link " href="#HTTP cookies" >HTTP cookies</a>
+                  </li>
+                  <li class="nav-item py-3">
+                    <a class="nav-link " href="#HTTP range requests">HTTP range requests</a>
+                  </li>
+                  <li class="nav-item py-3">
+                    <a class="nav-link" href="#HTTP redirects">HTTP redirects</a>
+                  </li>
+                  <li class="nav-item py-3">
+                    <a class="nav-link" href="#HTTP resources and specifications">HTTP specifications</a>
+                  </li>
+                  <li class="nav-item py-3">
+                    <a class="nav-link" href="#Feature policy">Feature policy</a>
+                  </li>                 
+                  
+              </ul>
+        </div>
+        <div class="col-sm-10 " id="content">
+          <section id="Introduction">
+            <h1 class="text-center bg-dark text-white">HTTP Documentation</h1>
+            <h1 class="text=info">Introduction</h1>
+            <p class="mr-2 text-justify"> 
+              Hypertext Transfer Protocol (HTTP) is an application-layer protocol for transmitting hypermedia documents, such as HTML. It was designed for communication between web browsers and web servers, but it can also be used for other purposes. HTTP follows a classical client-server model, with a client opening a connection to make a request, then waiting until it receives a response. HTTP is a stateless protocol, meaning that the server does not keep any data (state) between two requests.
+
+            </p>
+            <img src="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview/fetching_a_page.png" class="rounded mx-auto d-block" alt="..."><br><br>
+            <h1 >Cross-Origin Resource Sharing</h1>
+          </section>
+          <section id="HTTP access control">
+            <p class="text-justify">
+              Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any other origins (domain, scheme, or port) than its own from which a browser should permit loading of resources. CORS also relies on a mechanism by which browsers make a “preflight” request to the server hosting the cross-origin resource, in order to check that the server will permit the actual request. In that preflight, the browser sends headers that indicate the HTTP method and headers that will be used in the actual request.
+
+            </p>
+            <p>
+              An example of a cross-origin request:The front-end JavaScript code served from <br>https://domain-a.com uses XMLHttpRequest to make a request for<br>https://domain-b.com/data.json.
+
+            </p>
+            <p class="text-justify">
+              For security reasons, browsers restrict cross-origin HTTP requests initiated from scripts. For example, XMLHttpRequest and the Fetch API follow the same-origin policy. This means that a web application using those APIs can only request resources from the same origin the application was loaded from unless the response from other origins includes the right CORS headers.
+
+            </p>
+            <img src="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/cors_principle.png" class="rounded mx-auto d-block" alt="..."><br><br>
+          </section>
+          <section id="HTTP authentication">
+
+            <h1> HTTP authentication
+            </h1>
+
+            <p>
+              HTTP provides a general framework for access control and authentication. This page is an introduction to the HTTP framework for authentication, and shows how to restrict access to your server using the HTTP "Basic" schema.
+
+            </p>
+         
+            <p>RFC 7235 defines the HTTP authentication framework, which can be used by a server to challenge a client request, and by a client to provide authentication information.<br><br>
+            1.The server responds to a client with a 401 (Unauthorized) response status and provides information on how to authorize with a WWW-Authenticate response header containing at least one challenge.<br><br>
+2.A client that wants to authenticate itself with the server can then do so by including an Authorization request header with the credentials.<br><br>
+3.Usually a client will present a password prompt to the user and will then issue the request including the correct Authorization header.<br><br>
+</p>        
+
+
+
+</section>
+<section id="HTTP caching"> 
+  <h1>HTTP caching</h1>
+  <p>
+    The performance of web sites and applications can be significantly improved by reusing previously fetched resources. Web caches reduce latency and network traffic and thus lessen the time needed to display a representation of a resource. By making use of HTTP caching, Web sites become more responsive.
+
+
+  </p>
+  <p>
+    Caching is a technique that stores a copy of a given resource and serves it back when requested. When a web cache has a requested resource in its store, it intercepts the request and returns its copy instead of re-downloading from the originating server.<br><br>This achieves several goals: it eases the load of the server that doesn’t need to serve all clients itself, and it improves performance by being closer to the client, i.e., it takes less time to transmit the resource back. For a web site, it is a major component in achieving high performance. On the other side, it has to be configured properly as not all resources stay identical forever: it is important to cache a resource only until it changes, not longer.
+
+
+  </p>
+  <p>
+    There are several kinds of caches: these can be grouped into two main categories: private or shared caches. A shared cache is a cache that stores responses for reuse by more than one user. A private cache is dedicated to a single user. This page will mostly talk about browser and proxy caches, but there are also gateway caches, CDN, reverse proxy caches and load balancers that are deployed on web servers for better reliability, performance and scaling of web sites and web applications.
+  </p>
+
+
+</section>
+<section id="HTTP compression">
+<h1>
+  Compression in HTTP
+</h1>
+<p>
+  Compression is an important way to increase the performance of a Web site. For some documents, size reduction of up to 70% lowers the bandwidth capacity needs. Over the years, algorithms also got more efficient, and new ones are supported by clients and servers.</p>
+
+
+ <p>In practice, web developers don't need to implement compression mechanisms, both browsers and servers have it implemented already, but they have to be sure that the server is configured adequately. Compression happens at three different levels:</p> 
+<ul>
+
+  <li>First some file formats are compressed with specific optimized methods</li>
+  <li>Then general encryption can happen at the HTTP level (the resource is transmitted compressed from end to end)</li>
+  <li>Finally compression can be defined at the connection level, between two nodes of an HTTP connection</li>
+</ul>
+
+
+
+</section>
+
+
+<section id="HTTP conditional requests">
+
+  <h1>HTTP conditional requests</h1>
+  <p>
+    HTTP has a concept of conditional requests, where the result, and even the success of a request, can be changed by comparing the affected resources with the value of a validator. Such requests can be useful to validate the content of a cache, and sparing a useless control, to verify the integrity of a document, like when resuming a download, or when preventing to lose updates when uploading or modifying a document on the server.
+
+  </p>
+    
+ <h5>Principles</h5>
+
+  <p>
+    HTTP conditional requests are requests that are executed differently, depending on the value of specific headers. These headers define a precondition, and the result of the request will be different if the precondition is matched or not.
+  </p>
+ 
+</section>
+
+<section id="Content negotiation">
+
+  <h1>Content negotiation</h1>
+  <p>
+    In HTTP, content negotiation is the mechanism that is used for serving different representations of a resource at the same URI, so that the user agent can specify which is best suited for the user (for example, which language of a document, which image format, or which content encoding).
+
+  </p>
+  <h5>Principles of content negotiation</h5>
+  <p>
+    A specific document is called a resource. When a client wants to obtain a resource, the client requests it using its URL. The server uses this URL to choose one of the variants it provides – each variant being called a representation – and returns a specific representation to the client. The overall resource, as well as each of the representations, have a specific URL. How a specific representation is chosen when the resource is called is determined by content negotiation and there are several ways of negotiating between the client and the server.
+
+  </p>
+ 
+  
+  
+</section>
+<section id="HTTP cookies">
+  <h1>Using HTTP cookies</h1>
+  <p>
+    An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user's web browser. The browser may store it and send it back with later requests to the same server. Typically, it's used to tell if two requests came from the same browser — keeping a user logged-in, for example. It remembers stateful information for the stateless HTTP protocol.
+
+
+  </p>
+  <p>Cookies are mainly used for three purposes:</p>
+  <h5>Session management</h5>
+  <p>Logins, shopping carts, game scores, or anything else the server should remember</p>
+  <h5>Personalization</h5>
+  <p>User preferences, themes, and other settings
+  </p>
+  <h5>Tracking</h5>
+  <p>Recording and analyzing user behavior
+  </p>
+
+
+</section>
+<section id="HTTP range requests">
+<h1>HTTP range requests</h1>
+<p >HTTP range requests allow to send only a portion of an HTTP message from a server to a client. Partial requests are useful for large media or downloading files with pause and resume functions, for example.
+
+</p>
+<p>The Transfer-Encoding header allows chunked encoding, which is useful when larger amounts of data are sent to the client and the total size of the response is not known until the request has been fully processed. The server sends data to the client straight away without buffering the response or determining the exact length, which leads to improved latency. Range requests and chunking are compatible and can be used with or without each other.</p>
+<h5>Checking if a server supports partial requests</h5>
+<p>If the Accept-Ranges is present in HTTP responses (and its value isn't "none"), the server supports range requests. You can check this by issuing a HEAD request with cURL, for example.</p><br>
+<p class="bg-light text-center">
+curl -I http://i.imgur.com/z4d4kWk.jpg <br>
+HTTP/1.1 200 OK <br>
+... <br>
+
+Accept-Ranges: bytes <br>
+Content-Length: 146515 <br>
+</p>
+</section>
+<section id="HTTP redirects">
+  <h1>Redirections in HTTP</h1>
+  <p>
+    URL redirection, also known as URL forwarding, is a technique to give more than one URL address to a page, a form, or a whole Web site/application. HTTP has a special kind of response, called a HTTP redirect,
+  </p>
+  <p>In HTTP, redirection is triggered by a server sending a special redirect response to a request. Redirect responses have status codes that start with 3, and a Location header holding the URL to redirect to.
+
+    When browsers receive a redirect, they immediately load the new URL provided in the Location header. Besides the small performance hit of an additional round-trip, users rarely notice the redirection</p>
+    
+    <img src="https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections/httpredirect.png" class="rounded mx-auto d-block" alt="..."><br><br>
+
+</section>
+
+<section id="HTTP resources and specifications">
+
+<h1>HTTP resources and specifications
+</h1>
+<p>HTTP was first specified in the early 1990s. Designed with extensibility in mind, it has seen numerous additions over the years; this lead to its specification being scattered through numerous specification documents (in the midst of experimental abandoned extensions). This page lists relevant resources about HTTP.
+
+</p>
+
+
+</section>
+<section id="Feature policy">
+  <h1> Feature policy</h1>
+  <p>Feature Policy allows web developers to selectively enable, disable, and modify the behavior of certain features and APIs in the browser. It is similar to Content Security Policy but controls features instead of security behavior.</p>
+  <h5>In a nutshell</h5>
+  <p>Feature Policy provides a mechanism to explicitly declare what functionality is used (or not used), throughout your website. This allows you to lock in best practices, even as the codebase evolves over time — as well as to more safely compose third-party content — by limiting which features are available.
+
+    With Feature Policy, you opt-in to a set of "policies" for the browser to enforce on specific features used throughout a website. These policies restrict what APIs the site can access or modify the browser's default behavior for certain features.</p>
+    <h5>Examples of what you can do with Feature Policy:</h5>
+    <ul>
+      <li>Change the default behavior of autoplay on mobile and third party videos</li>
+      <li>Restrict a site from using sensitive APIs like camera or microphone</li>
+      <li>Allow iframes to use the fullscreen API</li>
+      <li>Block the use of outdated APIs like synchronous XHR and document.write()</li>
+      <li>Ensure images are sized properly and are not too big for the viewport</li>
+    </ul>
+  
+</section>
+
+
+        </div>
+      </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+</html>
